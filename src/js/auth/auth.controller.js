@@ -6,6 +6,7 @@ class AuthCtrl {
     'ngInject'; // enusres $state is available
 
     this._User = User;
+    this._$state = $state;
     this.title = $state.current.title;
     // Get auth type from state
     this.authType = $state.current.name.replace('app.', '');
@@ -16,8 +17,7 @@ class AuthCtrl {
     this._User.attemptAuth(this.authType, this.formData).then(
       // Callback for success
       (res) => {
-        this.isSubmitting = false;
-        console.log(this._User.current);
+        this._$state.go('app.home');
     },
     // Callback for failure
     (err) => {

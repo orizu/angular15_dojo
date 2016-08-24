@@ -74,4 +74,21 @@ export default class User {
 
     return deferred.promise;
   }
+
+  // Used by UI-router resolves to determine access to states
+  ensureAuthIs(loggedIn) {
+    let deferred = this._$q.defer();
+
+    this.verifyAuth().then(
+      (authValid) => {
+        if (authValid !== loggedIn) {
+          this._$state.go('app.home');
+          deferred.resolve(false);
+        } else {
+          deferred.resolve(true);
+        }
+      }
+    );
+    return deferred.promise;
+  }
 }
