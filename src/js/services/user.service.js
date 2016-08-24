@@ -3,7 +3,7 @@
  */
 
 export default class User {
-  constructor(AppConstants, $http) {
+  constructor(JWT, AppConstants, $http) {
     'ngInject';
 
 
@@ -11,6 +11,7 @@ export default class User {
     // underscore conventionally denotes a service
     this._AppConstants = AppConstants;
     this._$http = $http;
+    this._JWT = JWT;
 
     // Object to store user properties
     this.current = null;
@@ -28,6 +29,7 @@ export default class User {
       // ES6 arrow function
     }).then((res) => {
       this.current = res.data.user;
+      this._JWT.save(res.data.user.token);
       return res;
     });
   }
