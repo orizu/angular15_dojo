@@ -3,7 +3,7 @@
  */
 
 export default class User {
-  constructor(JWT, AppConstants, $http) {
+  constructor(JWT, AppConstants, $http, $state) {
     'ngInject';
 
 
@@ -12,6 +12,7 @@ export default class User {
     this._AppConstants = AppConstants;
     this._$http = $http;
     this._JWT = JWT;
+    this._$state = $state; // UI-router
 
     // Object to store user properties
     this.current = null;
@@ -32,5 +33,12 @@ export default class User {
       this._JWT.save(res.data.user.token);
       return res;
     });
+  }
+
+  logout () {
+    this.current = null;
+    this._JWT.destroy();
+    // Hard reload current state to flush personalised data
+    this._$state.go(this._$state.$current, null, { reload:true });
   }
 }
