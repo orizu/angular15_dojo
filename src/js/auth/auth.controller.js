@@ -24,7 +24,6 @@ class AuthCtrl {
       this.isSubmitting = false;
       this.errors = err.data.errors;
     });
-
   }
 }
 

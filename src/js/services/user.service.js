@@ -69,6 +69,8 @@ export default class User {
           this._JWT.destroy();
           deferred.resolve(false);
         }
+        // This reject is handled by authInterceptor which redirects to app.home
+
       );
     }
 

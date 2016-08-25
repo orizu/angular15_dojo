@@ -8,7 +8,7 @@
  */
 
 
-function authInterceptor(AppConstants, $window, $q) {
+function authInterceptor(JWT, AppConstants, $window, $q) {
   'ngInject';
 
   return {
