@@ -3,8 +3,11 @@
  */
 //export default
 class SettingsCtrl {
-  constructor (User) {
+  constructor (User, $state) {
     'ngInject';
+
+    this._User = User;
+    this._$state = $state;
 
     this.formData = {
       email: User.current.email,
@@ -19,8 +22,21 @@ class SettingsCtrl {
 
     // We could have also created a logout method thus:
     // logout() { this._User.logout() }
+  }
 
-
+  // Settings update submit handler
+  submitForm () {
+    this.isSubmitting = true;
+    this._User.update(this.formData).then(
+      // Callback for success
+      (user) => {
+        this._$state.go('app.profile', { username: user.username });
+      },
+      // Callback for failure
+      (err) => {
+        this.isSubmitting = false;
+        this.errors = err.data.errors;
+      });
   }
 }
 

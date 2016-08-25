@@ -93,4 +93,22 @@ export default class User {
     );
     return deferred.promise;
   }
+
+  // User update handler
+  update (fields) {
+
+    //let route = (type == 'login') ? '/login' : '';
+    return this._$http({
+      url: this._AppConstants.api + '/user',
+      method: 'PUT',
+      data: {
+        user: fields,
+      }
+      // ES6 arrow function
+    }).then((res) => {
+      this.current = res.data.user;
+      return res.data.user;
+    });
+  }
+
 }
