@@ -2,7 +2,6 @@ class ProfileCtrl {
   constructor(profile, User) {
     'ngInject';
 
-
     this.profile = profile;
 
     if (User.current) {
@@ -13,6 +12,5 @@ class ProfileCtrl {
     }
   }
 }
-
 
 export default ProfileCtrl;
