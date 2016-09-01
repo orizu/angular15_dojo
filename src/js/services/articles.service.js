@@ -2,12 +2,12 @@
  * Created by orizu on 27/08/2016.
  */
 export default class Articles {
-  constructor (AppConstants, $http) {
+  constructor (AppConstants, $http, $q) {
     'ngInject';
 
     this._AppConstants = AppConstants;
     this._$http = $http;
-
+    this._$q = $q;
   }
 
   // url below uses ES6 template literals, you can write variables in a string with ${} syntax
@@ -23,5 +23,28 @@ export default class Articles {
       // ES6 arrow function
     };
     return this._$http(request).then((res) => res.data.article);
+  }
+
+  get (slug) {
+    let deferred = this._$q.defer();
+
+    if (!slug.replace(" ", "")) {
+      deferred.reject("Article slug is empty");
+      return deferred.promise;
+    }
+
+
+    let request = {
+      url: `${this._AppConstants.api}/articles/${slug}`,
+      method: 'GET',
+      // ES6 arrow function
+    };
+    this._$http(request).then(
+      (res) => deferred.resolve(res.data.article),
+      (err) => deferred.reject(err)
+    );
+
+    return deferred.promise;
+
   }
 }
