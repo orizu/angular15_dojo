@@ -12,16 +12,27 @@ export default class Articles {
 
   // url below uses ES6 template literals, you can write variables in a string with ${} syntax
   // e.g: (hi ${userName}).
-  // These strings must be wrapped in backticks and not quotes.
+  // These strings must be wrapped in backticks and not quotes
+  //
   save (article) {
-    let request = {
-      url: `${this._AppConstants.api}/articles`,
-      method: 'POST',
-      data: {
-        article: article,
-      }
+    let request = {};
+
+    if (article.slug) {
+      request.url = `${this._AppConstants.api}/articles/${article.slug}`;
+      request.method = 'PUT';
+
+      // NB: Delete slug from the article so that server updates the slug,
+      // in case the title of the article changed.
+      delete article.slug;
+
       // ES6 arrow function
-    };
+    } else {
+      request.url = `${this._AppConstants.api}/articles`;
+      request.method = 'POST';
+    }
+
+    request.data = { article: article };
+
     return this._$http(request).then((res) => res.data.article);
   }
 
