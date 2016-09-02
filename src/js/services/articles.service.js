@@ -45,6 +45,15 @@ export default class Articles {
     );
 
     return deferred.promise;
+  }
 
+  // Delete an article
+  destroy (slug) {
+    let request = {
+      url: `${this._AppConstants.api}/articles/${slug}`,
+      method: 'DELETE',
+      // ES6 arrow function
+    };
+    return this._$http(request);
   }
 }

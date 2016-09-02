@@ -1,13 +1,26 @@
 <article-meta article="$ctrl.article">
-  <button class="btn btn-sm btn-outline-secondary">
-    <i class="ion-plus-round"></i>
+  <span ng-show="$ctrl.canModify">
+    <a class="btn btn-outline-secondary btn-sm"
+       ui-sref="app.editor({ slug: $ctrl.article.slug })">
+      <i class="ion-edit"></i> Edit Article
+    </a>
     &nbsp;
-    Follow Brad Green
-  </button>
-  &nbsp;
-  <button class="btn btn-sm btn-outline-primary">
-    <i class="ion-heart"></i>
+    <button class="btn btn-sm btn-outline-danger"
+      ng-class="{disabled: $ctrl.isDeleting}"
+      ng-click="$ctrl.deleteArticle()">
+      <i class="ion-trash-a"></i> Delete Article
+    </button>
+  </span>
+
+  <span ng-hide="$ctrl.canModify">
+    <button class="btn btn-sm btn-outline-secondary">
+      <i class="ion-plus-round"></i>
+      &nbsp;Follow Brad Green
+    </button>
     &nbsp;
-    Favorite Article <span class="counter">(29)</span>
-  </button>
+    <button class="btn btn-sm btn-outline-primary">
+      <i class="ion-heart"></i>
+    &nbsp; Favorite Article <span class="counter">(29)</span>
+    </button>
+  </span>
 </article-meta>

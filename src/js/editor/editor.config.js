@@ -3,10 +3,9 @@
  */
 function EditorConfig ($stateProvider) {
   'ngInject';
-
   $stateProvider
     .state('app.editor', {
-      url: '/editor',
+      url: '/editor/:slug',
       controller: 'EditorCtrl',
       controllerAs: '$ctrl',
       templateUrl: 'editor/editor.html',
@@ -15,7 +14,9 @@ function EditorConfig ($stateProvider) {
         auth: function (User) {
           return User.ensureAuthIs(true);
         },
-        article: function (Articles, User, $state, $stateParams) {
+        // auth as a param makes it a dependency
+        // article resolve only attempted after the auth check completes
+        article: function (Articles, User, $state, $stateParams, auth) {
           if ($stateParams.slug) {
             return Articles.get($stateParams.slug).then(
               (article) => {
@@ -26,9 +27,7 @@ function EditorConfig ($stateProvider) {
                   $state.go('app.home');
                 }
               },
-              (err) => {
-                $state.go('app.home');
-              }
+              (err) => $state.go('app.home')
             );
           } else {
             return null;

@@ -7,6 +7,7 @@ class EditorCtrl {
 
     this._Articles = Articles;
     this._$state = $state;
+    this.article = article;
 
     if (!this.article) {
       this.article = {
