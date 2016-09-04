@@ -17,7 +17,7 @@ class FavouriteBtnCtrl {
 
   submit () {
     this.isSubmitting = true;
-    
+
     if (!this._User.current) {
       this._$state.go('app.register');
       return;
