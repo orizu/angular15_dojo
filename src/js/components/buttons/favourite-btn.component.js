@@ -17,31 +17,27 @@ class FavouriteBtnCtrl {
 
   submit () {
     this.isSubmitting = true;
-    //$state.getSlug()
-    var slug = '';
-//console.log(this.article);
+    
     if (!this._User.current) {
       this._$state.go('app.register');
       return;
     }
 
-    // If favourited unfavourite and vice versa
-    if (this.article.favourited) {
+    // If favourited, unfavourite and vice versa
+    if (this.article.favorited) {
       this._Articles.unfavourite(this.article.slug).then(
         () => {
           this.isSubmitting = false;
-          this.article.favourited = false;
-          this.article.favouritesCount--;
-          console.log('Not favourited');
+          this.article.favorited = false;
+          this.article.favoritesCount--;
         }
       );
     } else {
       this._Articles.favourite(this.article.slug).then(
         () => {
           this.isSubmitting = false;
-          this.article.favourited = true;
-          this.article.favouritesCount++;
-          console.log('Now favourited');
+          this.article.favorited = true;
+          this.article.favoritesCount++;
         }
       );
     }

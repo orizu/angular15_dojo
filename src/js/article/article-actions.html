@@ -11,21 +11,14 @@
       <i class="ion-trash-a"></i> Delete Article
     </button>
   </span>
+  &nbsp;
 
-  <span ng-hide="$ctrl.canModify">
-    <button class="btn btn-sm btn-outline-secondary">
-      <i class="ion-plus-round"></i>
-      &nbsp;Follow Brad Green
-    </button>
-    &nbsp;
-    <button class="btn btn-sm btn-outline-primary">
-      <i class="ion-heart"></i>
-    &nbsp; Favorite Article <span class="counter">(29)</span>
-    </button>
-
+  <span ng-show="$ctrl.canModify">
+    <follow-btn user="$ctrl.article.author"></follow-btn>
+&nbsp;
     <favourite-btn article="$ctrl.article">
-      {{ $ctrl.article.favourite ? 'Unfavourite' : 'Favourite'}} Article <span class="counter">
-      ({{ $ctrl.article.favouritesCount }})</span>
+      {{ $ctrl.article.favorited ? 'Unfavourite' : 'Favourite'}} Article <span class="counter">
+      ({{ $ctrl.article.favoritesCount }})</span>
     </favourite-btn>
   </span>
 </article-meta>
