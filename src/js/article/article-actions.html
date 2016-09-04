@@ -22,5 +22,10 @@
       <i class="ion-heart"></i>
     &nbsp; Favorite Article <span class="counter">(29)</span>
     </button>
+
+    <favourite-btn article="$ctrl.article">
+      {{ $ctrl.article.favourite ? 'Unfavourite' : 'Favourite'}} Article <span class="counter">
+      ({{ $ctrl.article.favouritesCount }})</span>
+    </favourite-btn>
   </span>
 </article-meta>

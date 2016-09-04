@@ -67,4 +67,22 @@ export default class Articles {
     };
     return this._$http(request);
   }
+  
+  // Favourite an article
+  favourite (slug) {
+    return this._$http({
+      url: this._AppConstants.api + '/articles/' + slug + '/favorite',
+      method: 'POST',
+      // ES6 arrow function
+    }).then((res) => res.data);
+  }
+
+  // Unfavourite an article
+  unfavourite (slug) {
+    return this._$http({
+      url: this._AppConstants.api + '/articles/' + slug + '/favorite',
+      method: 'DELETE',
+      // ES6 arrow function
+    }).then((res) => res.data);
+  }
 }

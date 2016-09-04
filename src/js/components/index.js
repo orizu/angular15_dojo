@@ -16,4 +16,7 @@ componentsModule.component('followBtn', FollowBtn);
 import ArticleMeta from './article-helpers/article-meta.component';
 componentsModule.component('articleMeta', ArticleMeta);
 
+import FavouriteBtn from './buttons/favourite-btn.component';
+componentsModule.component('favouriteBtn', FavouriteBtn);
+
 export default componentsModule;
