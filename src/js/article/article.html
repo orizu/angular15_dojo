@@ -72,7 +72,8 @@
           </p>
         </div>
 
-        <comment ng-repeat="cmt in $ctrl.comments" data="cmt"></comment>
+        <comment ng-repeat="cmt in $ctrl.comments" data="cmt"
+        delete-cb="$ctrl.deleteComment(cmt.id, $index)"></comment>
       </div>
     </div>
   </div>

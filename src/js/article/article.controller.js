@@ -46,6 +46,15 @@ class ArticleCtrl {
       }
     );
   }
+
+  // Deletes comment from article display via its index
+  deleteComment (commentId, index) {
+    this._Comments.destroy(commentId, this.article.slug). then(
+      (success) => {
+        this.comments.splice(index, 1);
+      }
+    );
+  }
 }
 
 export default ArticleCtrl;
