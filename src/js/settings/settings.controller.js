@@ -30,7 +30,7 @@ class SettingsCtrl {
     this._User.update(this.formData).then(
       // Callback for success
       (user) => {
-        this._$state.go('app.profile', { username: user.username });
+        this._$state.go('app.profile.main', { username: user.username });
       },
       // Callback for failure
       (err) => {

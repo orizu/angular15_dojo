@@ -3,6 +3,7 @@ function ProfileConfig($stateProvider) {
 
   $stateProvider
   .state('app.profile', {
+    abstract: true,
     url: '/@:username',
     controller: 'ProfileCtrl',
     controllerAs: '$ctrl',
@@ -21,7 +22,23 @@ function ProfileConfig($stateProvider) {
         );
       }
     }
+  })
+  // Abstract sub-states
+  .state('app.profile.main', {
+    url: '',
+    controller: 'ProfileArticlesCtrl',
+    controllerAs: '$ctrl',
+    templateUrl: 'profile/profile-articles.html',
+    title: 'Profile'
+  })
+  .state('app.profile.favorites', {
+    url: '/favorites',
+    controller: 'ProfileArticlesCtrl',
+    controllerAs: '$ctrl',
+    templateUrl: 'profile/profile-articles.html',
+    title: 'Favourites'
   });
+
 
 };
 

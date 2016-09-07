@@ -1,10 +1,10 @@
 <div class="article-meta" xmlns="http://www.w3.org/1999/html">
-  <a ui-sref="app.profile({username: $ctrl.article.author.username})">
+  <a ui-sref="app.profile.main({username: $ctrl.article.author.username})">
     <img ng-src="{{$ctrl.article.author.image}}"/>
 
   <div class="info">
     <a class="author"
-       ui-sref="app.profile({username: $ctrl.article.author.username})"
+       ui-sref="app.profile.main({username: $ctrl.article.author.username})"
        ng-bind="$ctrl.article.author.username">
     </a>
 

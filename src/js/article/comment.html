@@ -3,12 +3,12 @@
     <p class="card-text" ng-bind="::$ctrl.data.body"></p>
   </div>
   <div class="card-footer">
-    <a class="comment-author" ui-sref="app.profile({ username: $ctrl.data.author.username })">
+    <a class="comment-author" ui-sref="app.profile.main({ username: $ctrl.data.author.username })">
       <img ng-src="{{::$ctrl.data.author.image}}" class="comment-author-img" />
     </a>
     &nbsp;&nbsp;
     <a class="comment-author"
-       ui-sref="app.profile({ username: $ctrl.data.author.username })"
+       ui-sref="app.profile.main({ username: $ctrl.data.author.username })"
        ng-bind="::$ctrl.$ctrl.data.author.username">
     </a>
     <span class="date-posted" ng-bind="::$ctrl.data.createdAt | date: 'longDate'">
