@@ -1,10 +1,16 @@
 class ArticleListCtrl{
-  constructor (Articles) {
+  constructor (Articles, $scope) {
     'ngInject';
 
     this._Articles = Articles;
     this.setListTo(this.listConfig);
 
+
+    // Listen to setPageTo event, fired by pagination component
+    // when the user clicks to view a different page
+    $scope.$on('setPageTo', (ev, pageNumber) => {
+      this.setPageTo(pageNumber);
+    });
   }
 
   pageRange (total) {
@@ -21,6 +27,12 @@ class ArticleListCtrl{
   setListTo(newList) {
     this.list = [];
     this.listConfig = newList;
+    this.runQuery();
+  }
+
+  setPageTo(pageNumber) {
+    this.listConfig.currentPage = pageNumber;
+
     this.runQuery();
   }
 
