@@ -1,0 +1,19 @@
+<article-preview article="article"
+ng-repeat="article in $ctrl.ist">
+</article-preview>
+
+<div class="article-preview"
+     ng-hide="!$ctrl.loading">
+  Loading articles...
+</div>
+
+<div class="article-preview"
+     ng-show="!$ctrl.loading && !$ctrl.list.length">
+  No articles are here... yet.
+</div>
+
+<list-pagination
+  total="$ctrl.listConfig.totalPages"
+  current-page="$ctrl.listConfig.currentPage"
+  ng-hide="$ctrl.listConfig.totalPages <= 1">
+</list-pagination>

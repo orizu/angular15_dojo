@@ -85,4 +85,25 @@ export default class Articles {
       // ES6 arrow function
     }).then((res) => res.data);
   }
+
+  /*
+  config object spec:
+
+  properties are
+  type: String [REQUIRED]
+  - all( default articles list )
+  - feed = current user favourites
+  filters: Object whose properties act as key => value pairs of URL params e.g {author: orizu.nwokeji}
+  */
+
+  query (config) {
+    let request = {
+      url: `${this._AppConstants.api}/articles` + ((config.type === 'feed') ?  '/feed' : ''),
+      method: 'GET',
+      params: config.filters ? config.filters : null
+      // ES6 arrow function
+    };
+    return this._$http(request).then((res)=> res.data);
+  }
+
 }

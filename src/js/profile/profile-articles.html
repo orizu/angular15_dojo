@@ -1,4 +1,4 @@
-<p>Current state is {{ $ctrl.profileState }}</p>
+<article-list limit="5" list-config="$ctrl.listConfig"></article-list>
 <div class="article-preview">
   <div class="article-meta">
     <a href=""><img /></a>
@@ -15,8 +15,8 @@
     <p>Building web applications is not an easy task. It's even hard to make ones that scale.</p>
     <span>Read more...</span>
     <ul class="tag-list">
-      <li class="tag-default tag-pill tag-outline">programming</li>
-      <li class="tag-default tag-pill tag-outline">web</li>
+      <li class="tag-default tag-pill tag-outline"
+       ng-repeat="tag in $ctrl.tagList">{{ tag }}</li>
     </ul>
   </a>
 </div>

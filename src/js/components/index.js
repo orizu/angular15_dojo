@@ -19,4 +19,14 @@ componentsModule.component('articleMeta', ArticleMeta);
 import FavouriteBtn from './buttons/favourite-btn.component';
 componentsModule.component('favouriteBtn', FavouriteBtn);
 
+import ArticlePreview from './article-helpers/article-preview.component';
+componentsModule.component('articlePreview', ArticlePreview);
+
+import ArticleList from './article-helpers/article-list.component';
+componentsModule.component('articleList', ArticleList);
+
+import ListPagination from './article-helpers/list-pagination.component';
+componentsModule.component('listPagination', ListPagination);
+
+
 export default componentsModule;
